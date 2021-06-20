@@ -231,3 +231,22 @@ main {
 .modal-close-btn:hover {
     background-color: #327ab6;
 }
+
+.submit-alert {
+    color: #fff;
+    display: flex;
+    margin: 0 auto 3rem auto;
+    width: 75%;
+    border-radius: 5px;
+    background-color: rgb(152, 231, 116);
+    font-weight: 600;
+    text-align: center;
+    align-items: center;
+    transition: .5s linear;
+}
+
+.submit-alert-text {
+    margin: auto;
+    transition: .1s linear;
+    height: 0;
+}
