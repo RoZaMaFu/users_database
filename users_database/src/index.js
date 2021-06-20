@@ -13,7 +13,7 @@ const filterInput = document.querySelector('input[class="search-input"]')
 
 filterInput.oninput = (e) => {
     const regex = new RegExp(`${e.target.value}`, 'ig')
-    const data = JSON.parse(localStorage.getItem('data')).filter(user => {
+    const data = JSON.parse(localStorage.getItem('tempdata')).filter(user => {
         for (let key in user) {
             if(regex.test(user[key])){
                 return true
@@ -28,7 +28,7 @@ filterInput.oninput = (e) => {
 const addBtn = document.querySelector('button[class="add-btn"]')
 addBtn.onclick = () => {
     const table = document.querySelector('div[class="employees-data"]')
-    table.appendChild(addNewUser(JSON.parse(localStorage.getItem('data')).length + 1))
+    table.appendChild(addNewUser(JSON.parse(localStorage.getItem('tempdata')).length + 1))
 }
 
 const uploadBtn = document.querySelector('button[class="upload-btn"]')
@@ -39,7 +39,7 @@ uploadBtn.onclick = () => {
 }
 
 uploadInput.onchange = (e) => {
-    let currentData = JSON.parse(localStorage.getItem('data'))
+    let currentData = JSON.parse(localStorage.getItem('tempdata'))
     const reader = new FileReader()
     reader.readAsBinaryString(e.target.files[0])
     reader.onload = () => {
@@ -53,7 +53,7 @@ uploadInput.onchange = (e) => {
 const exportBtn = document.querySelector('button[class="export-btn"]')
 
 exportBtn.onclick = () => {
-    const data = localStorage.getItem('data')
+    const data = localStorage.getItem('tempdata')
     const a = document.createElement('a')
     a.download = "export.json"
     a.href = `data:application/json;;charset=utf-8,${encodeURIComponent(data)}`
